@@ -1,0 +1,100 @@
+
+
+.jumbotron .container {
+    max-width: 40rem;
+}
+
+#Pagination {
+    display: none;
+}
+
+.pagination {
+    visibility: hidden;
+    justify-content: center;
+    margin-bottom:0;
+}
+
+.page-link {
+    background: none;
+    border-color: #007bff;
+}
+
+.page-link:HOVER {
+    border-color: #007bff;
+}
+
+.logo{
+    background:#000 url('animate.gif');background-size:cover;background-position-y:center;width:800px;max-width:100%;margin-bottom:15px;
+}
+
+.row img{
+    background-repeat:no-repeat;
+    background-position:top center;
+    background-size:contain;
+    background-color:#efefef;
+}
+
+
+#github{position:absolute;right:0;top:0;}
+#github img{width:120px;}
+
+.fullwidth{max-width: 99% !important;}
+
+@media only screen and (max-width: 480px) {
+    .jumbotron {
+        padding: 1rem;
+        padding-bottom: 0;
+        margin-bottom:1rem;
+    }
+
+    .pagination {
+        justify-content: inherit;
+    }
+
+    .page-link {
+        border-radius:1px !important;
+    }
+
+    #filters {
+        overflow-x: scroll;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    #filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    
+    #github {display:none;}
+    #github img{width:80px;}
+
+    .fullwidth{max-width: 100% !important;}
+}
+
+@media only screen and (min-width: 800px){
+    .jumbotron{
+        padding:2rem 2rem;
+        padding-bottom:1.5rem;
+    }
+
+    #github{
+        position:fixed;z-index: 2;
+    }
+
+    .fixed{
+        padding-top:260px;
+    }
+
+    .fixed .jumbotron{
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+}
