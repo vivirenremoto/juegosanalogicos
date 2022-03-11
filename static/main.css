@@ -30,7 +30,7 @@
 .row img{
     background-repeat:no-repeat;
     background-position:top center;
-    background-size:contain;
+    background-size:cover;
     background-color:#efefef;
 }
 
