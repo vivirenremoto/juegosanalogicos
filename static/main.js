@@ -19,9 +19,9 @@ $.ajax({url: sf, type: 'GET', dataType: 'text'})
 
 
         var photo_final = rows[i][3];
-        if( $(document).width() < 500 ){
-            photo_final = rows[i][4];
-        }
+        //if( $(document).width() < 500 ){
+        //    photo_final = rows[i][4];
+        //}
 
         new_table.push({
             category: rows[i][0],
@@ -42,7 +42,6 @@ $.ajax({url: sf, type: 'GET', dataType: 'text'})
 
 
 
-
 function showInfo(data) {
     var tableOptions = {
         "data": data,
@@ -52,6 +51,10 @@ function showInfo(data) {
     }
     Sheetsee.makeTable(tableOptions);
     Sheetsee.initiateTableFilter(tableOptions);
+
+
+    $('#loading').remove();
+    $('nav').show();
 
 
     var categories = [];
@@ -92,7 +95,7 @@ function showInfo(data) {
 
     });
 
-    /*
+
     $('.card_link').click(function(){
         //$(this).css('background-image', "url('" + $(this).data('gif') + "')" );
 
@@ -101,10 +104,31 @@ function showInfo(data) {
 
         $('#modal_body').html('<iframe border="0" style="max-width:100%;" frameborder="0" height="500" width="700" src="https://twitframe.com/show?url=' + encodeURI($(this).attr('href')) + '"></iframe> ');
 
+        $('#link_source').data('url', $(this).attr('href'));
+
+
+
+        dataLayer.push({
+			'event': 'card_view',
+			'eventCategory': 'Modal',
+			'url': $(this).attr('href')
+		});
+
 
         return false;
     });
-    */
+
+    $('#link_source').click(function(){
+        window.open( $(this).data('url') );
+    });
+
+
+    $('.btn_what').click(function(){
+        
+        $('#modal_what').modal('show');
+        return false;
+    })
+
 
 
     $('.card-img-top').mouseover(function(){
@@ -126,3 +150,24 @@ function showInfo(data) {
     }
 }
 
+
+
+function share(source){
+    var share_message = document.title;
+
+    if( source == 'twitter' ){
+        url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(share_message) + '&tw_p=tweetbutton&url=' + document.location.href;
+    
+    }else if( source == 'facebook' ){
+        url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.location.href);
+
+    }else if( source == 'whatsapp' ){
+        url = 'whatsapp://send?text=' + encodeURIComponent(share_message + ' ' + document.location.href);
+
+    }else if( source == 'pinterest' ){
+        url = 'http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(document.location.href);
+
+    }
+
+    window.open(url);
+}

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Videojuegos Analógicos</title>
+    <title>👾 Videojuegos Analógicos para hacer con tus hijos</title>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
 
@@ -10,6 +10,16 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <link rel="stylesheet" href="static/main.css?v=1">
+
+
+
+    <meta property="og:image" content="https://videojuegosanalogicos.com/videojuegosanalogicos/static/social.png">
+    <meta property="og:image:secure_url" content="https://videojuegosanalogicos.com/videojuegosanalogicos/static/social.png">
+    <meta property="og:image:alt" content="👾 Videojuegos Analógicos para hacer con tus hijos">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="👾 Videojuegos Analógicos para hacer con tus hijos">
+    <meta name="twitter:image" content="https://videojuegosanalogicos.com/videojuegosanalogicos/static/social.png">
 </head>
 
 
@@ -30,12 +40,17 @@
     
     
     <style>
-        .jumbotron{background: #ccd9ee;}
+        body{padding-bottom:70px;}
+        .jumbotron{background: #ffe066;}
         .page-item.active .page-link{background-color: black;border-color: black;}
-        .page-link{border-color:black;color:black;}
+        .page-link{border-color:black;color:black;background:rgb(255,255,255,0.5);}
         .page-link:HOVER{border-color:black;background:white;color:black;}
-        h1{margin-bottom:20px;margin-top:0;font-size:25px;}
-        img{background-size:cover;}
+        h1{margin-bottom:20px;margin-top:0;font-size:30px;}
+        .btn_what{position:fixed;right:0;width:200px;color:black !important;background:orange;padding:10px;bottom:0;text-align:center;font-size:20px;}
+
+        @media only screen and (max-width: 480px){
+          .btn_what{position:fixed;left:0;right:0;width:100%;}
+        }
     </style>
     
 
@@ -48,9 +63,10 @@
 
 
         <div id="filters">
-            <nav>
+            <div id="loading">Cargando</div>
+            <nav style="display:none;">
                 <ul class="pagination">
-                    <li class="page-item btn_filter active"><a class="page-link" href="#">Todos</a></li>
+                    <li class="page-item btn_filter active"><a class="page-link" href="#">Todo</a></li>
                 </ul>
             </nav>
         </div>
@@ -60,7 +76,7 @@
 
     <div class="container">
         <div id="fullTable">
-            <p align="center">Cargando</p>
+            <p align="center"></p>
         </div>
     </div>
 
@@ -81,7 +97,7 @@
     </script>
 
 
-
+    <a href="javascript:;" class="btn_what">¿Qué es esto?</a>
 
 
 
@@ -94,13 +110,59 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="static/main.js?v=22"></script>
+    <script type="text/javascript" src="static/main.js?v=32"></script>
 
 
 
+    <div class="modal" tabindex="-1" role="dialog" id="modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Vídeo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="modal_body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="link_source">Visitar fuente</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
+
+
+      <div class="modal" tabindex="-1" role="dialog" id="modal_what">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">¿Qué es esto?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Web creada por <a href="https://twitter.com/comandogdev" target="_blank">Miquel Camps Orteza</a></p>
+              <p>La idea surgió a raíz de ver los juegos que hizo <a href="https://twitter.com/davidferriz/status/1480875915324313602" target="_blank">David Ferriz</a> para sus hijos usando materiales que se suelen tener en casa.</p>
+              <p>Como mi hija todavía es pequeña quería guardarlos para cuando sea mayor.</p>
+              <p>Luego pensé que podría ser interesante abrir un espacio en Internet donde agruparlos y donde otros padres y madres también puedan enviar sus creaciones.</p>
+              <p><a href="https://twitter.com/juegosanalogico" target="_blank" class="btn btn-warning btn-block text-center">Seguir en twitter @juegosanalogico</a></p>
+              <p><button onclick="share('twitter')" class="btn btn-info btn-block text-center">Compartir en Twitter</button></p>
+              <p><button onclick="share('facebook')" class="btn btn-primary btn-block text-center">Compartir en Facebook</button></p>
+              <p><button onclick="share('whatsapp')" class="btn btn-success btn-block text-center">Compartir en Whatsapp</button></p>
+              <p><button onclick="share('pinterest')" class="btn btn-danger btn-block text-center">Añadir a Pinterest</button></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 </body>
-
 </html>
