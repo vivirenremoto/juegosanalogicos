@@ -69,7 +69,7 @@ function showInfo(data) {
     categories.sort();
 
     $(categories).each(function (key, elem) {
-        $('.pagination').append('<li class="page-item btn_filter"><a class="page-link" href="#' + elem + '">' + elem + '</a></li>');
+        $('.pagination').append('<li class="page-item btn_filter"><a class="page-link" href="#' + elem.split(' ')[1] + '">' + elem + '</a></li>');
     })
 
 
