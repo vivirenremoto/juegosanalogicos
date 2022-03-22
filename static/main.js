@@ -102,7 +102,18 @@ function showInfo(data) {
 
         $('#modal').modal('show');
 
-        $('#modal_body').html('<iframe border="0" style="max-width:100%;" frameborder="0" height="500" width="700" src="https://twitframe.com/show?url=' + encodeURI($(this).attr('href')) + '"></iframe> ');
+        var html;
+        var url = $(this).attr('href');
+        if( url.indexOf('twitter') > -1 ){
+            html = '<iframe border="0" style="max-width:100%;" frameborder="0" height="500" width="700" src="https://twitframe.com/show?url=' + encodeURI(url) + '"></iframe>';
+        
+        }else if( url.indexOf('youtube') > -1 ){
+            html = '<iframe width="460" height="259" src="' + url.replace('watch?v=','embed/') + '?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        }
+
+
+        $('#modal_body').html(html);
+
 
         $('#link_source').data('url', $(this).attr('href'));
 
@@ -150,6 +161,11 @@ function showInfo(data) {
     }
 }
 
+$(function(){
+    $('.btn_close').click(function(){
+        $('#modal_body').html('');
+    });
+});
 
 
 function share(source){
